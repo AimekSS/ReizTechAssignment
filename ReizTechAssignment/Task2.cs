@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ReizTechAssignment.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,35 +8,13 @@ using System.Threading.Tasks;
 
 namespace ReizTechAssignment
 {
-    /// <summary>
-    /// fix the issue with recursion where after exiting it prints out message from different call
-    /// </summary>
     internal class Task2
     {
-        public static string fileName = "jsonBranchStringFile.json";
-        public static string folderName = "Json";
-        public static string filePath = Path.Combine($"..\\..\\..\\{folderName}", fileName);
-
-        public class Branch
-        {
-            public List<Branch> branches = new List<Branch>();
-        }
-
         public static void BranchTreeSetUpService()
         {
             Branch mainBranch = new Branch();
-            string jsonString;
 
-            try
-            {
-                jsonString = File.ReadAllText(filePath);
-
-                mainBranch = JsonConvert.DeserializeObject<Branch>(jsonString);
-            }
-            catch (Exception)
-            {
-
-            }
+            mainBranch = JsonHelper.GetTreeObject();
 
             for (; ; )
             {
@@ -63,8 +42,7 @@ namespace ReizTechAssignment
                 }
             }
 
-            jsonString = JsonConvert.SerializeObject(mainBranch);
-            File.WriteAllText(filePath, jsonString);
+            JsonHelper.SerializeTreeObjectToJson(mainBranch);
         }
 
         private static void BranchMovementService(Branch branch)
@@ -157,7 +135,7 @@ namespace ReizTechAssignment
                         }
                         else if (userInput2 == "2")
                         {
-                            break;
+                            goto exit;
                         }
                         else
                         {
@@ -168,7 +146,7 @@ namespace ReizTechAssignment
                 }
             }
 
-            exit:
+        exit:
             Console.WriteLine("Exiting the branch");
             Thread.Sleep(1500);
         }

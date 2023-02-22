@@ -1,0 +1,29 @@
+﻿{
+  "branches": [
+    {
+      "branches": [
+        {
+          "branches": [
+            { "branches": [ { "branches": [] } ] },
+            {
+              "branches": [
+                { "branches": [ { "branches": [] } ] }
+              ]
+            },
+            { "branches": [ { "branches": [] } ] }
+          ]
+        }
+      ]
+    },
+    {
+      "branches": [
+        { "branches": [ { "branches": [] } ] },
+        {
+          "branches": [
+            { "branches": [ { "branches": [] } ] }]
+        },
+        { "branches": [ { "branches": [] } ] }
+      ]
+    }
+  ]
+}
